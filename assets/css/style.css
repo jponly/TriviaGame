@@ -11,6 +11,10 @@
     clear: both;
     
 }
+
+#interval_time {
+   
+}
  
 .display-4 {
     font-family: 'Monoton', cursive;
@@ -73,22 +77,30 @@
     font-size:10px;
 }
 
- /* body {
-    background: url(../images/sneakerhead.jpg);
-    background-repeat: no-repeat;
-   background-size: 1500px;
-
-
-}  */
-
 .forms{ 
     display: none; 
 }​
-
-#interval_time {
-    margin-left:50%;
+ 
+#result_box{
+    display: none; 
 
 }
+
+
+
+/* p{ 
+    display: none;
+}​  */
+
+
+/*body {
+    background: url(../images/sneakerhead.jpg);
+    background-repeat: no-repeat;
+
+
+
+} */ 
+
 
 
 

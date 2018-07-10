@@ -1,47 +1,110 @@
 $(document).ready(function () {
-    
+
 
     // - set variables (nouns) questions, correct answers, incorrect answers, results
-    var answerCorrect = true;
-    var answerIncorrect = false;
- //   var number = 121;
-    var number = 10; 
+    var answerCorrect = "a";
+    var answerIncorrect = ["b", "c", "d"];
+    var number = 20;
     var intervalI = 0;
     var interval;
 
-    
+
+
+    $("#result_box").hide();
 
     // start button on click. When button pressed, button dissappears and reveal timer
     $("#start_btn").click(function () {
         $(".forms").show();
+        $("#result_box").hide();
         $("#start_btn").hide();
-        interval = setInterval(function() { 
+        interval = setInterval(function () {
             $("#interval_time").text(number - intervalI);
             console.log('The time is: ' + (number - intervalI));
             intervalI++;
             if (intervalI > number) {
-                alert('Times up!');
+                $("#interval_time").hide();
+                // alert('Times up!');
                 clearInterval(interval);
                 interval = null;
             }
         }, 1000)
-        
+
     });
 
-// "Done" button will stop timer and reveal correct/incorrect answers or reveal box model with results in percentage(if possible)
-
-    $('#done_btn').click(function() {
-//        document.forms['MyForm']
-        //   $(".forms").show("a");
-        // $('input[value=a]').hide();
-        //  $( ).css( "color", "green" );
-        $( 'input[value=a]' ).parent().css( "background-color", "1px solid green" );
-           
-    })
 
 
-    
 
-    
+    $('#done_btn').click(function () {
+
+        clearInterval(interval);
+        $("#interval_time").hide();
+        $(".forms").hide();
+
+        $("#result_box").show();
+       
+
+
+
+    });
+
+
+
+
+
+
+
+
+
 
 }); //document ready//
+
+
+// function handleClick() {
+//     var amountCorrect = 0;
+//     for (var i = 1; i <= 45; i++) {
+//         var radios = document.getElementsByName('question' + i);
+//         for (var j = 0; j < radios.length; j++) {
+//             var radio = radios[j];
+//             if (radio === "a" && radio.checked) {
+//                 amountCorrect++;
+//             }
+//         }
+//     }
+
+//     alert("Correct Responses: " + amountCorrect);
+
+// }
+
+
+
+
+ //  document.forms['MyForm']
+        //  $(".forms").show("a");
+        //  $(".forms").hide();
+        //  $('input[value=a]').hide();
+
+        //  $( ).css( "color", "green" );
+        //  $( 'input[value=a]' ).parent().css( "background-color", "1px solid green" );
+
+
+
+         //   var number = 121;
+
+        //  $('.form-group').on("#done_btn", function (event) {
+        //     event.preventDefault();
+        //     var $answer = $(".answer_box");
+        //     var answer = $answer.val("a");
+        //     console.log(answer);
+        //     if(answer === "a") {
+        //         $("#correct_answer"). text("Yes");
+        //     } else {
+        //         $("#incorrect_answer").text("try again");
+        //     }
+
+        // });
+
+
+
+
+
+
