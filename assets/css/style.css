@@ -12,11 +12,7 @@
     
 }
 
-#interval_time {
-   
-}
- 
-.display-4 {
+ .display-4 {
     font-family: 'Monoton', cursive;
     color: rgb(6, 80, 94);
     text-align:center;
@@ -83,8 +79,9 @@
  
 #result_box{
     display: none; 
-
+    
 }
+
 
 
 
