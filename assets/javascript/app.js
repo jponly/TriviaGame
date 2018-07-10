@@ -8,6 +8,8 @@ $(document).ready(function () {
     var intervalI = 0;
     var interval;
 
+    setTimeout(timeUp, 1000 * 22);
+
 
 
     $("#result_box").hide();
@@ -39,6 +41,7 @@ $(document).ready(function () {
         clearInterval(interval);
         $("#interval_time").hide();
         $(".forms").hide();
+        
 
         $("#result_box").show();
        
@@ -47,13 +50,17 @@ $(document).ready(function () {
 
     });
 
+    function timeUp() {
 
+        $(".forms").hide();
+        $("#result_box").show();
+        $("#result_box").append("<h2>Time's Up!</h2>");
+        console.log("time is up");
+        
 
+    }
 
-
-
-
-
+   
 
 
 }); //document ready//
