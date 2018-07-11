@@ -1,16 +1,12 @@
 $(document).ready(function () {
 
-
-    // - set variables (nouns) questions, correct answers, incorrect answers, results
     var number = 45;
-    var intervalI = 0;
-    var interval;
+    var intervalId;
+    var timeOut;
 
     var correct = 0;
     var wrong = 0;
     var skipped = 0;
-
-    var timeoutvar = setTimeout(timeUp, 1000 * 47);
 
 
     $("#result_box").hide();
@@ -21,55 +17,39 @@ $(document).ready(function () {
         $(".forms").show();
         $("#result_box").hide();
         $("#start_btn").hide();
-        interval = setInterval(function () {
-            $("#interval_time").text(number - intervalI);
-            console.log('The time is: ' + (number - intervalI));
-            intervalI++;
-            if (intervalI > number) {
-                $("#interval_time").hide();
-                // alert('Times up!');
-                clearInterval(interval);
-                interval = null;
-            }
-        }, 1000)
-
+        intervalId = setInterval(timer, 1000);
+        timeOut = setTimeout(timeUp, 45000);
     });
 
+    // function to operate timer interval //
+    function timer() {
+        number--;
+        $("#interval_time").text(number);
+        console.log('The time is: ' + (number));
+    }
 
-
-
+    // "Done" button stops timer and dsiplays correct,incorrect,unanswered //
     $('#done_btn').click(function () {
-
-        clearInterval(interval);
-        clearTimeout(timeoutvar);
         $("#interval_time").hide();
         $(".forms").hide();
+        $("#timeup").hide();
         $("#result_box").show();
-
-        if (interval < number) {
-            $("#timeup").hide();
-            clearInterval(interval);
-            interval = null;
-
-        }
-
-        checkAnswers();
+        clearTimeout(timeOut);
+        timeUp();
 
     });
 
+    // function which operates when timer interval runs out //
     function timeUp() {
-
         $(".forms").hide();
         $("#result_box").show();
         $("#timeup").html("<h5>Time's Up!</h5>");
         console.log("time is up");
-
         checkAnswers();
-        // if done button is pushed, do not show "Time's up"
-
-
+        clearInterval(intervalId);
     }
 
+    // calculates correct,incorrect,unanswered and prints in html //
     function checkAnswers() {
         for (i = 1; i <= 10; i++) {
             var answerVal = $('input[name="question' + i + '"]:checked').val();
@@ -86,8 +66,6 @@ $(document).ready(function () {
         $('#wrong_answer').text("Incorrect: " + " " + skipped);
         $('#unanswered').text("Unanswered: " + " " + wrong);
 
-
-
     }
 
 
@@ -102,16 +80,6 @@ $(document).ready(function () {
 
 
 
-// ===============================================//
-
-
-
-// STILL NEED //
-
-
-
-// fix formatting when start button disappears and jumbotron bumps down
-// fix delay when start button disappears and timer starts
 
 
 
