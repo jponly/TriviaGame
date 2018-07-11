@@ -2,15 +2,15 @@ $(document).ready(function () {
 
 
     // - set variables (nouns) questions, correct answers, incorrect answers, results
-    var answerCorrect = "a";
-    var answerIncorrect = ["b", "c", "d"];
     var number = 10;
     var intervalI = 0;
     var interval;
-    var score = 0;
-    var scoreIncorrect = 0;
 
-    setTimeout(timeUp, 1000 * 12);
+    var correct = 0;
+    var wrong = 0;
+    var skipped = 0;
+
+    var timeout = setTimeout(timeUp, 1000 * 12);
 
 
     $("#result_box").hide();
@@ -51,6 +51,8 @@ $(document).ready(function () {
             interval = null;
             
         }
+        cleartimeout(); 
+        checkAnswers();
        
      });
 
@@ -60,12 +62,30 @@ $(document).ready(function () {
         $("#result_box").show();
         $("#timeup").html("<h5>Time's Up!</h5>");
         console.log("time is up");
+        cleartimeout();
+        checkAnswers();
         // if done button is pushed, do not show "Time's up"
         
 
     }
 
-    function check (name) {
+    function checkAnswers () {
+        for(i=1; i<=10; i++) {
+            var answerVal = $('input[name="question' + i + '"]:checked').val();
+            if(answerVal == "a") correct++;
+            else if(answerVal == undefined) wrong++;
+            else skipped++;
+        } // end of for loop
+
+        console.log(correct);
+        console.log(wrong);
+        console.log(skipped);
+
+        $('#correct_answer').text("Correct: " + " " + correct);
+        $('#wrong_answer').text("Incorrect: " + " " + wrong);
+        $('#unanswered').text("Unanswered: " + " " + skipped);
+
+        /*
         var methods = document.getElementsByName(name);
         for(var i = 0; i< methods.length; i++){
             if(methods[i].check === answerCorrect) {
@@ -73,6 +93,7 @@ $(document).ready(function () {
                 console.log('score');
             }
         }
+        */
         
     } 
 
@@ -97,7 +118,7 @@ $(document).ready(function () {
 // calculate score and print to html p tags
 // if timer is up display "Time's up" in h5 tag, if press done, do not show h5 tag
 // fix formatting when start button disappears and jumbotron bumps down
-// fix delay when start button dsiiappears and timer starts
+// fix delay when start button disappears and timer starts
 
 
 

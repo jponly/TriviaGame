@@ -77,9 +77,10 @@
     display: none; 
 }​
  
-#result_box{
+ #result_box p{
     display: none; 
-    
+    display:flex;
+    justify-content: center; 
 }
 
 
