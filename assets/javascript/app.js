@@ -10,7 +10,7 @@ $(document).ready(function () {
     var wrong = 0;
     var skipped = 0;
 
-    var timeout = setTimeout(timeUp, 1000 * 12);
+    var timeoutvar = setTimeout(timeUp, 1000 * 12);
 
 
     $("#result_box").hide();
@@ -29,7 +29,7 @@ $(document).ready(function () {
                 $("#interval_time").hide();
                 // alert('Times up!');
                 clearInterval(interval);
-                interval = null;
+                 interval = null;
             }
         }, 1000)
 
@@ -41,6 +41,7 @@ $(document).ready(function () {
     $('#done_btn').click(function () {
 
         clearInterval(interval);
+        clearTimeout(timeoutvar);
         $("#interval_time").hide();
         $(".forms").hide();
         $("#result_box").show();
@@ -51,7 +52,7 @@ $(document).ready(function () {
             interval = null;
             
         }
-        cleartimeout(); 
+        
         checkAnswers();
        
      });
@@ -62,7 +63,7 @@ $(document).ready(function () {
         $("#result_box").show();
         $("#timeup").html("<h5>Time's Up!</h5>");
         console.log("time is up");
-        cleartimeout();
+       
         checkAnswers();
         // if done button is pushed, do not show "Time's up"
         
@@ -82,18 +83,10 @@ $(document).ready(function () {
         console.log(skipped);
 
         $('#correct_answer').text("Correct: " + " " + correct);
-        $('#wrong_answer').text("Incorrect: " + " " + wrong);
-        $('#unanswered').text("Unanswered: " + " " + skipped);
+        $('#wrong_answer').text("Incorrect: " + " " + skipped);
+        $('#unanswered').text("Unanswered: " + " " + wrong);
 
-        /*
-        var methods = document.getElementsByName(name);
-        for(var i = 0; i< methods.length; i++){
-            if(methods[i].check === answerCorrect) {
-                score+1
-                console.log('score');
-            }
-        }
-        */
+      
         
     } 
 
@@ -168,6 +161,17 @@ $(document).ready(function () {
         //     }
 
         // });
+
+
+         /*
+        var methods = document.getElementsByName(name);
+        for(var i = 0; i< methods.length; i++){
+            if(methods[i].check === answerCorrect) {
+                score+1
+                console.log('score');
+            }
+        }
+        */
 
 
 
